@@ -1,0 +1,22 @@
+<div [ngClass]="{reminder: task.reminder}" class="task my-1"
+    (dblclick)="onToggle(task)">
+    <h3>{{ task.text }} 
+        <div>
+            <fa-icon 
+            (click)="onDelete(task)"
+            [ngStyle]="{color:'red'}" 
+            [icon]="faTimes"></fa-icon>
+            <fa-icon 
+            (click)="onEdit(task)"
+            class="pl-2 text-sky-500"
+            [icon]="faPencil"></fa-icon>
+        </div>
+    </h3>
+    <p>{{ task.day }}</p>
+</div>
+<div *ngIf="editState && taskToEdit.docID === task.docID">
+    <app-edit-modal
+    [task]="task"
+    (updateEmitter)="onUpdate(task)"></app-edit-modal>
+</div>
+
