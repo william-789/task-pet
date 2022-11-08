@@ -1,27 +1,16 @@
-# TaskPet
+# HedgeHUG
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
+Welcome!
+This is a CRUD project created as an addition to my [portfolio](https://william-789.github.io/portfolio/).
+Feel free to test. Feedback is very welcome.
+There will be updates through the time on this same project.
+You can find more info about its stack bellow.
 
-## Development server
+## Stack
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
+Styled using [Tailwind](https://github.com/tailwindlabs/tailwindcss) version 3. 
+[RxJS](https://github.com/ReactiveX/rxjs) version 7.5.0.
+Integration with [Firebase](https://github.com/firebase/) for user validation and storage.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[JSON-Server](https://github.com/typicode/json-server) version 0.17.0 has been used for testing before the integration with Firebase.
