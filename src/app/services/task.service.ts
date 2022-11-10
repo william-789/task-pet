@@ -12,6 +12,8 @@ export class TaskService {
   public taskCollection: AngularFirestoreCollection<Task>;
   items: Observable<Task[]>;
   taskDoc!: AngularFirestoreDocument<Task>;
+  taskToEdit!: Task;
+  editMode: boolean = false;
 
   auth = getAuth();
   user = this.auth.currentUser;
@@ -54,43 +56,4 @@ export class TaskService {
     this.taskDoc = this.db.doc(`users/${this.uid}/task/${task.docID}`);
     this.taskDoc.update(task);
   }
-
-
-
-
-/*
-
-  getTasks(sort$: BehaviorSubject<string>) {
-    return combineLatest([
-      this.auth.user,
-      sort$
-    ]).pipe(
-      switchMap(values => {
-        const [user, sort] = values
-        
-        if(!user) {
-          return of([])
-        }
-
-        const query = this.taskCollection.ref.where(
-          'uid', '==', user.uid
-        ).orderBy(
-          'timestamp',
-          sort ? 'asc' : 'asc'
-        )
-
-        return query.get()
-      }),
-      map(snapshot => (snapshot as QuerySnapshot<Task>).docs)
-    )
-  }
-
-  /*updateTaskR(task: Task) {
-    return this.taskCollection.doc(task.id).update({
-      task
-    })
-  }
-
-  private apiUrl = 'http://localhost:5000/tasks'
-*/
 }

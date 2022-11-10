@@ -13,8 +13,8 @@ export class TaskItemComponent implements OnInit {
   @Input() task!: Task;
   faTimes = faTimes;  
   faPencil = faPencil;
-  editState: boolean = false;
-  taskToEdit!: Task;
+  //editState: boolean = false;
+  //taskToEdit!: Task;
 
   constructor(
     private taskService: TaskService,
@@ -33,27 +33,27 @@ export class TaskItemComponent implements OnInit {
   }
 
   onEdit(task: Task) {
-    this.editState = true;
-    this.taskToEdit = task;
+    this.taskService.taskToEdit = task;
+    this.taskService.editMode = true;
     this.openModal();
   }
 
   onUpdate(task: Task){
     this.taskService.updateTask(task);
-    this.clearState();
+    //this.clearState();
   }
 
-  clearState(){
+  /*clearState(){
     this.editState = false;
     this.taskToEdit = {
       text: '',
       day: new Date(),
       reminder: false
     };
-  }
+  }*/
 
   openModal(){
-    this.modal.toggleModal('edit');
+    this.modal.toggleModal('create');
   }
 
 }

@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "build",
+    "public": "dist/task-pet",
     "ignore": [
       "firebase.json",
       "**/.*",

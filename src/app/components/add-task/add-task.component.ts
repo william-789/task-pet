@@ -19,6 +19,11 @@ export class AddTaskComponent implements OnInit {
   
 
   ngOnInit(): void {
+    if(this.taskService.editMode){
+      this.task = this.taskService.taskToEdit;
+      this.taskService.updateTask(this.task);
+      console.log(this.task);
+    }
   }
 
   onSubmit() {
@@ -30,6 +35,7 @@ export class AddTaskComponent implements OnInit {
       alert('Please, select a date.');
       return;
     }
+    
     this.taskService.addTask(this.task);
     this.task.text = '';
     this.task.day = new Date();
