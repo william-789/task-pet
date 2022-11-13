@@ -13,8 +13,6 @@ export class TaskItemComponent implements OnInit {
   @Input() task!: Task;
   faTimes = faTimes;  
   faPencil = faPencil;
-  //editState: boolean = false;
-  //taskToEdit!: Task;
 
   constructor(
     private taskService: TaskService,
@@ -33,9 +31,9 @@ export class TaskItemComponent implements OnInit {
   }
 
   onEdit(task: Task) {
-    this.taskService.taskToEdit = task;
-    this.taskService.editMode = true;
+    this.taskService.toggleEditMode();
     this.openModal();
+    this.taskService.setTaskToEdit(task);
   }
 
   onUpdate(task: Task){

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { Observable, map } from 'rxjs';
+import { Observable, map, Subject } from 'rxjs';
 import { getAuth } from "firebase/auth";
 import { Task } from '../Task';
 
@@ -47,6 +47,7 @@ export class TaskService {
     this.taskDoc.delete();
   }
 
+  //Edition functions
   updateTask(task: Task) {
     this.taskDoc = this.db.doc(`users/${this.uid}/task/${task.docID}`);
     this.taskDoc.update(task);
@@ -55,5 +56,14 @@ export class TaskService {
   toggleReminder(task: Task) {
     this.taskDoc = this.db.doc(`users/${this.uid}/task/${task.docID}`);
     this.taskDoc.update(task);
+  }
+
+  toggleEditMode() {
+    this.editMode = !this.editMode;
+  }
+  
+  setTaskToEdit(task: Task) {
+    this.taskToEdit = task;
+    console.log(this.taskToEdit);
   }
 }

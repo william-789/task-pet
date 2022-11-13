@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+//import { FormGroup } from '@angular/forms';
 import { TaskService } from 'src/app/services/task.service';
 import { Task } from 'src/app/Task';
 
@@ -8,22 +9,26 @@ import { Task } from 'src/app/Task';
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent implements OnInit {
+  /*const form = new FormGroup({
+    first: new FormControl(),
+    last: new FormControl()
+ });*/
   task: Task = {
     text: '',
     day: new Date(),
     reminder: false
   }
   
-  constructor(private taskService: TaskService) { }
-
-  
+  constructor(public taskService: TaskService) { }
 
   ngOnInit(): void {
     if(this.taskService.editMode){
-      this.task = this.taskService.taskToEdit;
-      this.taskService.updateTask(this.task);
-      console.log(this.task);
+      this.task.text = this.taskService.taskToEdit.text;
+      this.task.day = this.taskService.taskToEdit.day;
+      this.task.reminder = this.taskService.taskToEdit.reminder;
     }
+
+    console.log(`this is add task: ${this.task}`);
   }
 
   onSubmit() {
@@ -35,10 +40,14 @@ export class AddTaskComponent implements OnInit {
       alert('Please, select a date.');
       return;
     }
-    
-    this.taskService.addTask(this.task);
+
+    if(this.taskService.editMode) {
+      this.taskService.updateTask(this.task);
+    }else {
+      this.taskService.addTask(this.task);
+    }
     this.task.text = '';
     this.task.day = new Date();
-    this.task.reminder = false;
+    this.task.reminder = false
   }
 }

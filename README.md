@@ -6,6 +6,8 @@ Feel free to test. Feedback is very welcome.
 There will be updates through the time on this same project.
 You can find more info about its stack bellow.
 
+**Update function is in progress**
+
 ## Stack
 
 Generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.

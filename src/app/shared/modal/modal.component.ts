@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ElementRef, OnDestroy } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-modal',
@@ -10,7 +11,10 @@ import { ModalService } from 'src/app/services/modal.service';
 export class ModalComponent implements OnInit, OnDestroy {
   @Input() modalID: string = '';
 
-  constructor(public modal: ModalService, public elem: ElementRef) { }
+  constructor(
+    public modal: ModalService, 
+    public elem: ElementRef,
+    private taskService: TaskService) { }
 
   ngOnInit(): void {
     //Maintain modals original text color regarless of parent
@@ -22,6 +26,9 @@ export class ModalComponent implements OnInit, OnDestroy {
   }
 
   closeModal() {
+    if(this.taskService.editMode) {
+      this.taskService.toggleEditMode();
+    }
     this.modal.toggleModal(this.modalID);
   }
 
